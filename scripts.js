@@ -33,9 +33,8 @@ const pregunta = {
         }
     ]
 }
-
 function imprimePregunta(pregunta) {
-  const newHTML = "";
+  let newHTML = "";
 
   newHTML += imprimeTitulo(pregunta);
   newHTML += imprimeTodasLasRespuestas(pregunta);
@@ -44,23 +43,55 @@ function imprimePregunta(pregunta) {
 }
 
 function imprimeTitulo(pregunta) {
-  // Put your code here
+   return `<p>${pregunta.titulo}</p>`
 }
 
+let respuesta = pregunta.respuestas
+
 function imprimeTodasLasRespuestas(pregunta) {
-  // Put your code here
+  
+  let todasRespuestas = ""
+
+ for (let i = 0; i < todasRespuestas; i++){
+  todasRespuestas += imprimeUnaRespuesta(respuesta[i])
+ }
+ 
+ return todasRespuestas
+ 
+  /*   for (let i = 0; i < 5; i++){
+    return `${pregunta.respuestas}`
+  } */
 }
 
 function imprimeUnaRespuesta(respuesta) {
-  // Put your code here
+  //return `${pregunta.respuestas.label[0, 1, 2, 3, 4]}`
+  //return `${imprimeInput} ${imprimeInput}` 
+  let answer = "";
+  answer += imprimeLabel(respuesta);
+  answer += imprimeInput(respuesta);
+
+  return answer;
 }
 
+
+
 function imprimeLabel(respuesta) {
-  // Put your code here
+ // return `<label for = ${respuesta.id}${respuesta.label}</label>`
+ let label = ""
+ label += `<label for = "${respuesta.id}"> ${respuesta.label}</label>`
+ return label
 }
 
 function imprimeInput(respuesta) {
-  // Put your code here
+  //return `<input id = ${respuesta.id}${respuesta.name} type = "radio" ${respuesta.value}</input>`
+  let input = ""
+  input += `<input id= ${respuesta.id} name= ${respuesta.name} type="radio" value= ${respuesta.value}>`
+  return input
 }
+
+//----------------------------------------------------------------
+//Las partes que estan comentadas es mi codigo anterior antes de ponernos a ver como se hacia (la clase)
+//Ahora mismo en la linea 51, en (pregunta), me pone que esta declarada pero no se lee, no encuentro el motivo
+//----------------------------------------------------------------
 
 document.getElementById("contenedorPreguntas").innerHTML = imprimePregunta(pregunta);
